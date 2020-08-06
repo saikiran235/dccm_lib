@@ -506,7 +506,7 @@ static void host_ota_cb(int ev, void *evd, void *arg) {
  * @param[in]   void
  * @return      bool
  **********************************************************************/
-  bool mgos_dccm_init(void)
+  bool mgos_dccm_lib_init(void)
   {
 
     if (mgos_sys_config_get_dccm_host_ota_enable())
