@@ -1,0 +1,45 @@
+author: Delta Things Pvt Ltd
+description: Support library for Delta Cloud Communication Module 
+version: 1.0
+type: lib
+
+tags:
+  - c
+  - http
+  - rpc
+
+sources:
+  - src
+
+includes:
+  - include
+
+config_schema:
+  - ["dccm", "o", {"title":"DCCM Settings"}]
+  - ["dccm.host.ota.enable", "b", true, {"title": "Enable DCCM"}]
+  - ["dccm.host.ota.chip_type", "s", "STM32", {"title": "Host MCU Type - STM32 ,AVR"}]
+  - ["dccm.host.ota.boot0.pin", "i", 12, {"title": "GPIO to control host boot0 or chip select pin"}]
+  - ["dccm.host.ota.boot0.active_high", "b", true, {title: "True if Port Pin is on when output is high (1)"}]
+  - ["dccm.host.ota.rst.pin", "i", 14, {"title": "GPIO to be used for controlling host reset pin"}]
+  - ["dccm.host.ota.rst.active_high", "b", true, {title: "True if Port Pin is on when output is high (1)"}]
+  - ["dccm.host.ota.intf_type", "s", "UART", {"title": "Type of the host communication interface [UART,SPI,i2c]"}]
+  - ["dccm.host.ota.uart.baud_rate", "i", 115200, {"title": "UART baud HOST<-->MCU"}]  
+  - ["dccm.host.ota.uart.rx_pin", "i", 25, {"title": "UART RX pin (connected to host TX)"}]
+  - ["dccm.host.ota.uart.tx_pin", "i", 26, {"title": "UART RX pin (connected to host RX)"}]
+  - ["dccm.host.rpc.enable", "b", true, {"title": "Enable RPC channel to host"}]
+  - ["dccm.host.rpc.intf_type", "s", "UART", {"title": "Type of the host communication interface [UART,SPI,i2c]"}]
+  - ["dccm.host.rpc.uart.baud_rate", "i", 115200, {"title": "RPC UART baud HOST<-->MCU"}]  
+  - ["dccm.host.rpc.uart.rx_pin", "i", 25, {"title": "UART RX pin (connected to host TX)"}]
+  - ["dccm.host.rpc.uart.tx_pin", "i", 26, {"title": "UART RX pin (connected to host RX)"}]
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/delta-things/dtos-ota
+
+# Used by the mos tool to catch mos binaries incompatible with this file format
+manifest_version: 2017-05-18
